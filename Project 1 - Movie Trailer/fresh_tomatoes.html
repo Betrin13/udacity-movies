@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My favourite movies</title>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+          body {
+            padding-top: 80px;
+            background-color: #f2f2f2;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile, .tv_serie_tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover, .tv_serie_tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+        .navbar-brand, .navbar-brand:hover {
+            font-size: 24px;
+            color: #777 !important;
+            text-shadow: none !important;
+            border: none !important;
+        }
+        .navbar-inverse {
+            background-color: #e7e7e7 !important;
+            background-image: none;
+        }
+        .tv_seriesc {
+            display: block;
+
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    /* U413 - 1.3 Identify the set of events that invoke behaviour of components and other programme elements*/
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        $(document).on('click', '.tv_serie_tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+        $(document).ready(function () {
+          $('.tv_serie_tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">My favourite movies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 moviec">
+        <h2>Movies</h2>
+            
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Ke1Y3P9D0Bc" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/d/d5/Iron_Man_3_theatrical_poster.jpg" width="220" height="342">
+    <h2>Iron man 3</h2>
+    <p><b>Description: </b>Marvel's 'Iron Man 3' pits brash-but-brilliant industrialist Tony Stark/Iron Man against an enemy whose reach knows no bounds. When Stark finds his personal world destroyed at his enemy's hands, he embarks on a harrowing quest to find those responsible. This journey, at every turn, will test his mettle.</p>
+    <p><b>Duration: </b>130min</p>
+    <p><b>Parts: </b>3</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Mh2ebPxhoLs" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjI1MTcwODk0MV5BMl5BanBnXkFtZTgwMTgwMDM5NTE@._V1_SX640_SY720_.jpg" width="220" height="342">
+    <h2>Southpaw</h2>
+    <p><b>Description: </b>Boxer Billy Hope turns to trainer Tick Wills to help him get his life back on track after losing his wife in a tragic accident and his daughter to child protection services.</p>
+    <p><b>Duration: </b>124min</p>
+    <p><b>Parts: </b>1</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="kY7HcUACs58" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/8063104/p8063104_p_v8_az.jpg" width="220" height="342">
+    <h2>Warrior</h2>
+    <p><b>Description: </b>The youngest son of an alcoholic former boxer returns home, where he is trained by his father for competition in a mixed martial arts tournament a path that puts the fighter on a collision cornerwith his older brother.</p>
+    <p><b>Duration: </b>140min</p>
+    <p><b>Parts: </b>1</p>
+
+</div>
+
+        </br>
+        </div>
+        <div class="col-md-12 tv_seriesc">
+        <h2>TV Series</h2>
+            
+<div class="col-md-6 col-lg-4 tv_serie_tile text-center" data-trailer-youtube-id="OmrA8nOZF2Q" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/tvbanners/11418130/p11418130_b_v8_aa.jpg" width="220" height="342">
+    <h2>Game of Thrones</h2>
+    <p><b>Description: </b>While a civil war brews between several noble families in Westeros, the children of the former rulers of the land attempt to rise up to power. Meanwhile a forgotten race, bent on destruction, return after.thousands of years in the North.</p>
+    <p><b>Episodes: </b>10</p>
+    <p><b>Seasons: </b>6</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 tv_serie_tile text-center" data-trailer-youtube-id="xdm7Z3TQhDg" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/tvbanners/12452768/p12452768_b_v8_aa.jpg" width="220" height="342">
+    <h2>Vikings</h2>
+    <p><b>Description: </b>The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.</p>
+    <p><b>Episodes: </b>9-10</p>
+    <p><b>Seasons: </b>4</p>
+
+</div>
+
+        </div>
+    </div>
+  </body>
+</html>
